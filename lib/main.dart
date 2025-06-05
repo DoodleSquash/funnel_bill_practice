@@ -438,7 +438,7 @@ class _StockItemForm extends StatelessWidget {
                   child: _DropdownField(
                     value: selectedCompany,
                     hint: "Some Company Name",
-                    items: const ["Bottles 1L", "Boxes", "Cartons", "Packets"],
+                    items: const ["Some Company Name", "Bottles 1L", "Boxes", "Cartons", "Packets"],
                     onChanged: onCompanyChanged,
                   ),
                 ),
