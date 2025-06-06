@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter/cupertino.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,7 +13,45 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Stock Item UI',
-      theme: ThemeData(primarySwatch: Colors.blue),
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        fontFamily: 'Segoe UI', // <-- Set your font family globally
+        textTheme: const TextTheme(
+          bodyLarge: TextStyle(
+            fontFamily: 'Segoe UI',
+            fontWeight: FontWeight.w400,
+            fontSize: 16,
+            height: 1.0, // 100%
+            letterSpacing: 0,
+          ),
+          bodyMedium: TextStyle(
+            fontFamily: 'Segoe UI',
+            fontWeight: FontWeight.w400,
+            fontSize: 16,
+            height: 1.0,
+            letterSpacing: 0,
+            textBaseline: TextBaseline.alphabetic,
+          ),
+          bodySmall: TextStyle(
+            fontFamily: 'Segoe UI',
+            fontWeight: FontWeight.w400,
+            fontSize: 16,
+            height: 1.0,
+            letterSpacing: 0,
+            textBaseline: TextBaseline.alphabetic,
+          ),
+        ),
+        inputDecorationTheme: const InputDecorationTheme(
+          hintStyle: TextStyle(
+            fontFamily: 'Segoe UI',
+            fontWeight: FontWeight.w400,
+            fontSize: 16,
+            height: 1.0,
+            letterSpacing: 0,
+            textBaseline: TextBaseline.alphabetic,
+          ),
+        ),
+      ),
       home: const StockItemScreen(),
       debugShowCheckedModeBanner: false,
     );
@@ -324,9 +363,9 @@ class _StockItemForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 708,
-      padding: const EdgeInsets.only(left: 50, right: 50, top: 10, bottom: 10),
+      padding: const EdgeInsets.only(left: 50, right: 50, top: 30, bottom: 30),
       decoration: BoxDecoration(
-        color: const Color.fromARGB(255, 25, 57, 100),
+        color: const Color.fromRGBO(248, 251, 255, 1),
         borderRadius: BorderRadius.circular(16),
       ),
       child: Row(
@@ -346,7 +385,7 @@ class _StockItemForm extends StatelessWidget {
                     onChanged: onItemTypeChanged,
                   ),
                 ),
-                const SizedBox(height: 50),
+                const SizedBox(height: 30),
 
                 // Item Name with Add Alias
                 Column(
@@ -355,10 +394,24 @@ class _StockItemForm extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("Item Name"),
+                        Text(
+                          "Item Name",
+                          style: const TextStyle(
+                            fontSize: 14,
+                            color: Color.fromRGBO(108, 108, 108, 1),
+                            fontWeight:
+                                FontWeight
+                                    .w600, // <-- Use weight 500 for labels
+                          ),
+                        ),
                         TextButton(
                           onPressed: () {},
-                          child: const Text("Add Alias"),
+                          child: const Text(
+                            "Add Alias",
+                            style: TextStyle(
+                              color: Color.fromRGBO(26, 132, 246, 1),
+                            ),
+                          ),
                         ),
                       ],
                     ),
@@ -366,7 +419,7 @@ class _StockItemForm extends StatelessWidget {
                     _TextField(hint: "Rocket"),
                   ],
                 ),
-                const SizedBox(height: 50),
+                const SizedBox(height: 30),
 
                 // Alias Name with Remove Alias
                 Column(
@@ -375,10 +428,24 @@ class _StockItemForm extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("Alias Name"),
+                        Text(
+                          "Alias Name",
+                          style: const TextStyle(
+                            fontSize: 14,
+                            color: Color.fromRGBO(108, 108, 108, 1),
+                            fontWeight:
+                                FontWeight
+                                    .w600, // <-- Use weight 500 for labels
+                          ),
+                        ),
                         TextButton(
                           onPressed: () {},
-                          child: const Text("Remove Alias"),
+                          child: const Text(
+                            "Remove Alias",
+                            style: TextStyle(
+                              color: Color.fromRGBO(26, 132, 246, 1),
+                            ),
+                          ),
                         ),
                       ],
                     ),
@@ -386,7 +453,7 @@ class _StockItemForm extends StatelessWidget {
                     _TextField(hint: "Pocket//."),
                   ],
                 ),
-                const SizedBox(height: 50),
+                const SizedBox(height: 30),
 
                 _LabeledField(
                   label: "Add To Group",
@@ -397,7 +464,7 @@ class _StockItemForm extends StatelessWidget {
                     onChanged: onGroupChanged,
                   ),
                 ),
-                const SizedBox(height: 50),
+                const SizedBox(height: 30),
 
                 _LabeledField(
                   label: "Unit",
@@ -408,7 +475,7 @@ class _StockItemForm extends StatelessWidget {
                     onChanged: onUnitChanged,
                   ),
                 ),
-                const SizedBox(height: 50),
+                const SizedBox(height: 30),
 
                 _LabeledField(
                   label: "Supplied From",
@@ -435,43 +502,108 @@ class _StockItemForm extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                // Opening Stock Quantity with right-aligned hint
                 _LabeledField(
                   label: "Opening Stock Quantity",
-                  child: _TextField(hint: "20,000,000 Pcs."),
+                  child: Stack(
+                    alignment: Alignment.centerRight,
+                    children: [
+                      _TextField(hint: ""),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 16),
+                        child: Text("20,000,000 Pcs."),
+                      ),
+                    ],
+                  ),
                 ),
 
-                const SizedBox(height: 50),
+                const SizedBox(height: 30),
 
-                // Price (In Rupees) with Change button
+                // Price (In Rupees) with Change button and right-aligned hint
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("Price (In Rupees)"),
+                        Text(
+                          "Price (In Rupees)",
+                          style: const TextStyle(
+                            fontSize: 14,
+                            color: Color.fromRGBO(108, 108, 108, 1),
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
                         TextButton(
                           onPressed: () {},
-                          child: const Text("Change From Rupees"),
+                          child: const Text(
+                            "Change From Rupees",
+                            style: TextStyle(
+                              color: Color.fromRGBO(26, 132, 246, 1),
+                            ),
+                          ),
                         ),
                       ],
                     ),
                     const SizedBox(height: 4),
-                    _TextField(hint: "20,000,000 Rs."),
+                    Stack(
+                      alignment: Alignment.centerRight,
+                      children: [
+                        _TextField(hint: ""),
+                        Padding(
+                          padding: const EdgeInsets.only(right: 16),
+                          child: Text("20,000,000 Rs."),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
 
-                const SizedBox(height: 62),
+                const SizedBox(height: 38),
 
                 _LabeledField(
                   label: "Product Code",
+
                   child: TextField(
                     decoration: InputDecoration(
                       hintText: "SGMW-24-001 - Auto Generated",
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(8),
+                        borderSide: const BorderSide(
+                          color: Color.fromRGBO(
+                            168,
+                            209,
+                            255,
+                            1,
+                          ), // <-- Updated color
+                          width: 1,
+                        ),
                       ),
-                      isDense: true,
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8),
+                        borderSide: const BorderSide(
+                          color: Color.fromRGBO(
+                            168,
+                            209,
+                            255,
+                            1,
+                          ), // <-- Updated color
+                          width: 1,
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8),
+                        borderSide: const BorderSide(
+                          color: Color.fromRGBO(
+                            71,
+                            160,
+                            255,
+                            1,
+                          ), // <-- Selected color
+                          width: 2,
+                        ),
+                      ),
+                      // isDense: true,
                       contentPadding: const EdgeInsets.symmetric(
                         horizontal: 12,
                         vertical: 10,
@@ -482,45 +614,59 @@ class _StockItemForm extends StatelessWidget {
                         padding: const EdgeInsets.only(right: 8.0),
                         child: SvgPicture.asset(
                           'assets/icons/settings_icon.svg',
-                          width: 24,
-                          height: 24,
+                          width: 20,
+                          height: 20,
                         ),
                       ),
-                      // To remove default padding of suffixIcon
                       suffixIconConstraints: const BoxConstraints(
-                        minWidth: 32,
-                        minHeight: 32,
+                        minWidth: 20,
+                        minHeight: 20,
                       ),
                     ),
                   ),
                 ),
 
-                const SizedBox(height: 50),
+                const SizedBox(height: 30),
 
                 _LabeledField(
                   label: "Note",
                   child: _TextField(hint: "Fnifinf"),
                 ),
 
-                const SizedBox(height: 50),
+                const SizedBox(height: 30),
 
                 // Variants section at the bottom
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      "Variants",
-                      style: TextStyle(fontSize: 14, color: Colors.black54),
+                    Row(
+                      children: [
+                        const Text(
+                          "Variants",
+                          style: TextStyle(fontSize: 14, color: Colors.black54),
+                        ),
+                        const SizedBox(width: 2),
+                        SvgPicture.asset(
+                          'assets/icons/Variants.svg',
+                          width: 13,
+                          height: 13,
+                        ),
+                      ],
                     ),
-                    const SizedBox(height: 5),
+                    const SizedBox(height: 15),
                     Container(
                       width: double.infinity,
                       padding: const EdgeInsets.all(16),
                       decoration: BoxDecoration(
-                        color: Color.fromRGBO(248, 251, 255, 1),
+                        color: Color.fromRGBO(235, 244, 255, 1),
                         border: Border.all(
-                          color: Color.fromRGBO(71, 160, 255, 1),
-                          width: 1.5,
+                          color: Color.fromRGBO(
+                            168,
+                            209,
+                            255,
+                            1,
+                          ), // <-- Updated color
+                          width: 1.0,
                         ),
                         borderRadius: BorderRadius.circular(8),
                       ),
@@ -535,32 +681,41 @@ class _StockItemForm extends StatelessWidget {
                             ),
                             textAlign: TextAlign.center,
                           ),
-                          const SizedBox(height: 12),
-                          OutlinedButton.icon(
+                          const SizedBox(height: 22),
+                          OutlinedButton(
                             onPressed: () {},
-                            icon: const Icon(
-                              Icons.add,
-                              color: Color.fromRGBO(71, 160, 255, 1),
-                            ),
-                            label: const Text(
-                              "Create New Variant",
-                              style: TextStyle(
-                                color: Color.fromRGBO(71, 160, 255, 1),
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
                             style: OutlinedButton.styleFrom(
+                              backgroundColor:
+                                  Colors.white, // <-- Set background to white
                               side: const BorderSide(
-                                color: Color.fromRGBO(71, 160, 255, 1),
+                                color: Color.fromRGBO(77, 160, 255, 1),
                                 width: 1.5,
                               ),
                               shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(24),
+                                borderRadius: BorderRadius.circular(10),
                               ),
                               minimumSize: const Size(0, 40),
                               padding: const EdgeInsets.symmetric(
                                 horizontal: 24,
                               ),
+                            ),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                const Text(
+                                  "Create New Variant",
+                                  style: TextStyle(
+                                    color: Color.fromRGBO(0, 0, 0, 1),
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                                const SizedBox(width: 8),
+                                SvgPicture.asset(
+                                  'assets/icons/Variants plus.svg',
+                                  width: 20,
+                                  height: 20,
+                                ),
+                              ],
                             ),
                           ),
                         ],
@@ -585,7 +740,7 @@ class _TaxInfoForm extends StatelessWidget {
     return Container(
       height: 708,
       // width: 398,
-      padding: const EdgeInsets.all(18),
+      padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 25),
       decoration: BoxDecoration(
         color: const Color.fromRGBO(248, 251, 255, 1),
         borderRadius: BorderRadius.circular(16),
@@ -593,31 +748,166 @@ class _TaxInfoForm extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            children: [
-              Text(
-                "Tax Information",
-                style: TextStyle(fontWeight: FontWeight.bold),
-                overflow: TextOverflow.ellipsis,
+          // Tax Information label and GST field with switch
+          
+            _LabeledField(
+              label: "Tax Information",
+              child: TextField(
+                decoration: InputDecoration(
+                  hintText: "GST",
+                  fillColor: Colors.white,
+                  filled: true,
+                  border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: const BorderSide(
+                    color: Color.fromRGBO(168, 209, 255, 1),
+                    width: 1,
+                  ),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: const BorderSide(
+                    color: Color.fromRGBO(168, 209, 255, 1),
+                    width: 1,
+                  ),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: const BorderSide(
+                    color: Color.fromRGBO(71, 160, 255, 1),
+                    width: 2,
+                  ),
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 10,
+                  ),
+                  suffixIcon: Padding(
+                  padding: const EdgeInsets.only(right: 8.0),
+                  child: SizedBox(
+                    height: 32,
+                    child: CupertinoSwitch(
+                    value: true,
+                    onChanged: (val) {},
+                    activeTrackColor: Color.fromRGBO(32, 137, 255, 1)
+                    ),
+                  ),
+                  ),
+                  suffixIconConstraints: const BoxConstraints(
+                  minWidth: 50,
+                  minHeight: 22,
+                  ),
+                ),
               ),
+            ),
 
-              const SizedBox(width: 8),
-              const Text("GST"),
-              Switch(value: true, onChanged: (_) {}),
-            ],
+
+          const SizedBox(height: 30),
+          // HSN Code with arrow
+
+
+          _LabeledField(
+            label: "HSN Code",
+
+            child: _DropdownField(
+              hint: "6546",
+              items: const ["6546", "1234", "7890"], // Example HSN codes
+              onChanged: (val) {},
+            ),
           ),
-          const SizedBox(height: 12),
-          _LabeledField(label: "HSN Code", child: _TextField(hint: "6546")),
-          const SizedBox(height: 12),
-          _LabeledField(label: "Central Tax", child: _TextField(hint: "9%")),
-          const SizedBox(height: 12),
-          _LabeledField(label: "State Tax", child: _TextField(hint: "9%")),
-          const SizedBox(height: 12),
-          _LabeledField(label: "IGST", child: _TextField(hint: "9%")),
-          const SizedBox(height: 12),
-          _LabeledField(label: "Cess", child: _TextField(hint: "9%")),
+          
+
+          const SizedBox(height: 30),
+
+
+          // Taxes box
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.symmetric(vertical: 23, horizontal: 30),
+            decoration: BoxDecoration(
+              color: Color.fromRGBO(235, 244, 255, 1),
+                            borderRadius: BorderRadius.circular(12),
+            ),
+            child: Column(
+              children: [
+                _TaxRow(label: "Central Tax", value: "9%"),
+                const SizedBox(height: 12),
+                _TaxRow(label: "State Tax", value: "9%"),
+                const SizedBox(height: 12),
+                _TaxRow(label: "IGST", value: "9%"),
+                const SizedBox(height: 12),
+                _TaxRow(label: "Cess", value: "9%"),
+              ],
+            ),
+          ),
         ],
       ),
+    );
+  }
+}
+
+class _TaxRow extends StatelessWidget {
+  final String label;
+  final String value;
+  const _TaxRow({required this.label, required this.value});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Expanded(
+          child: Text(
+            label,
+            style: const TextStyle(
+              fontWeight: FontWeight.w400,
+              fontSize: 16,
+              color: Colors.black54,
+              fontFamily: 'Segoe UI',
+            ),
+          ),
+        ),
+        SizedBox(
+          width: 120,
+          child: TextField(
+            textAlign: TextAlign.center,
+            decoration: InputDecoration(
+              hintText: value,
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(8),
+                borderSide: const BorderSide(
+                  color: Color.fromRGBO(168, 209, 255, 1),
+                  width: 1,
+                ),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(8),
+                borderSide: const BorderSide(
+                  color: Color.fromRGBO(168, 209, 255, 1),
+                  width: 1,
+                ),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(8),
+                borderSide: const BorderSide(
+                  color: Color.fromRGBO(71, 160, 255, 1),
+                  width: 2,
+                ),
+              ),
+              contentPadding: const EdgeInsets.symmetric(
+                horizontal: 8,
+                vertical: 10,
+              ),
+              fillColor: Colors.white,
+              filled: true,
+            ),
+            style: const TextStyle(
+              fontWeight: FontWeight.w400,
+              fontSize: 16,
+              // fontFamily: 'Segoe UI',
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
@@ -679,9 +969,13 @@ class _LabeledField extends StatelessWidget {
       children: [
         Text(
           label,
-          style: const TextStyle(fontSize: 14, color: Colors.black54),
+          style: const TextStyle(
+            fontSize: 14,
+            color: Color.fromRGBO(108, 108, 108, 1),
+            fontWeight: FontWeight.w500, // <-- Use weigh 500 for labels
+          ),
         ),
-        const SizedBox(height: 4),
+        const SizedBox(height: 15),
         child,
       ],
     );
@@ -695,12 +989,36 @@ class _TextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      style: const TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w400, // <-- weight 400 for input text
+      ),
       decoration: InputDecoration(
         hintText: hint,
-        fillColor: Colors.white, // <-- Ensure white background
-        filled: true, // <-- Ensure background is filled
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-        isDense: true,
+        fillColor: Colors.white,
+        filled: true,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: const BorderSide(
+            color: Color.fromRGBO(168, 209, 255, 1), // <-- Updated color
+            width: 1,
+          ),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: const BorderSide(
+            color: Color.fromRGBO(168, 209, 255, 1), // <-- Updated color
+            width: 1,
+          ),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: const BorderSide(
+            color: Color.fromRGBO(71, 160, 255, 1), // <-- Selected color
+            width: 2,
+          ),
+        ),
+        // isDense: true,
         contentPadding: const EdgeInsets.symmetric(
           horizontal: 12,
           vertical: 10,
@@ -728,30 +1046,42 @@ class _DropdownField extends StatelessWidget {
     return DropdownButtonFormField<String>(
       value: value,
       hint: Text(hint),
+      style: const TextStyle(
+        color: Colors.black,
+        fontSize: 16,
+        fontWeight: FontWeight.w400, // <-- weight 400 for dropdown input
+      ),
       items:
           items.map((item) {
             return DropdownMenuItem<String>(value: item, child: Text(item));
           }).toList(),
+
       onChanged: onChanged,
       decoration: InputDecoration(
-        fillColor: Colors.white, // <-- Ensure white background
-        filled: true, // <-- Ensure background is filled
+        fillColor: Colors.white,
+        filled: true,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
-          borderSide: const BorderSide(color: Color.fromRGBO(71, 160, 255, 1)),
+          borderSide: const BorderSide(
+            color: Color.fromRGBO(168, 209, 255, 1), // <-- Updated color
+            width: 1,
+          ),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
-          borderSide: const BorderSide(color: Color.fromRGBO(71, 160, 255, 1)),
+          borderSide: const BorderSide(
+            color: Color.fromRGBO(168, 209, 255, 1), // <-- Updated color
+            width: 1,
+          ),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
           borderSide: const BorderSide(
-            color: Color.fromRGBO(71, 160, 255, 1),
+            color: Color.fromRGBO(71, 160, 255, 1), // <-- Selected color
             width: 2,
           ),
         ),
-        isDense: true,
+        // isDense: true,
         contentPadding: const EdgeInsets.symmetric(
           horizontal: 12,
           vertical: 10,
