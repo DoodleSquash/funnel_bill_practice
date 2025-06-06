@@ -324,206 +324,249 @@ class _StockItemForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 708,
-      // width: 730, // <-- Match the SizedBox width above
-      padding: const EdgeInsets.only(left: 50, right: 50, top: 30, bottom: 50),
+      padding: const EdgeInsets.only(left: 50, right: 50, top: 10, bottom: 10),
       decoration: BoxDecoration(
         color: const Color.fromARGB(255, 25, 57, 100),
         borderRadius: BorderRadius.circular(16),
       ),
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          // LEFT COLUMN
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Expanded(
-                  child: _LabeledField(
-                    label: "Item Type",
-                    child: _DropdownField(
-                      value: selectedItemType,
-                      hint: "Goods",
-                      items: const ["Goods", "Services"],
-                      onChanged: onItemTypeChanged,
-                    ),
+                _LabeledField(
+                  label: "Item Type",
+                  child: _DropdownField(
+                    value: selectedItemType,
+                    hint: "Goods",
+                    items: const ["Goods", "Services"],
+                    onChanged: onItemTypeChanged,
                   ),
                 ),
-                Expanded(
-                  child: Container(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.min,
+                const SizedBox(height: 50),
+
+                // Item Name with Add Alias
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text("Item Name"),
-                            const SizedBox(width: 8),
-                            TextButton(
-                              onPressed: () {},
-                              child: const Text("Add Alias"),
-                            ),
-                          ],
+                        Text("Item Name"),
+                        TextButton(
+                          onPressed: () {},
+                          child: const Text("Add Alias"),
                         ),
-                        _TextField(hint: "Rocket"),
                       ],
                     ),
-                  ),
+                    const SizedBox(height: 4),
+                    _TextField(hint: "Rocket"),
+                  ],
                 ),
-                Expanded(
-                  child: Container(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.min,
+                const SizedBox(height: 50),
+
+                // Alias Name with Remove Alias
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text("Alias Name"),
-                            const SizedBox(width: 8),
-                            TextButton(
-                              onPressed: () {},
-                              child: const Text("Remove Alias"),
-                            ),
-                          ],
+                        Text("Alias Name"),
+                        TextButton(
+                          onPressed: () {},
+                          child: const Text("Remove Alias"),
                         ),
-                        _TextField(hint: "Pocket//."),
                       ],
                     ),
+                    const SizedBox(height: 4),
+                    _TextField(hint: "Pocket//."),
+                  ],
+                ),
+                const SizedBox(height: 50),
+
+                _LabeledField(
+                  label: "Add To Group",
+                  child: _DropdownField(
+                    value: selectedGroup,
+                    hint: "Bottles 1L",
+                    items: const ["Bottles 1L", "Boxes", "Cartons", "Packets"],
+                    onChanged: onGroupChanged,
                   ),
                 ),
-                Expanded(
-                  child: _LabeledField(
-                    label: "Add To Group",
-                    child: _DropdownField(
-                      value: selectedGroup,
-                      hint: "Bottles 1L",
-                      items: const [
-                        "Bottles 1L",
-                        "Boxes",
-                        "Cartons",
-                        "Packets",
-                      ],
-                      onChanged: onGroupChanged,
-                    ),
+                const SizedBox(height: 50),
+
+                _LabeledField(
+                  label: "Unit",
+                  child: _DropdownField(
+                    value: selectedUnit,
+                    hint: "Pcs. (Pieces)",
+                    items: const ["Pcs. (Pieces)", "Kg", "Litres", "Meters"],
+                    onChanged: onUnitChanged,
                   ),
                 ),
-                Expanded(
-                  child: _LabeledField(
-                    label: "Unit",
-                    child: _DropdownField(
-                      value: selectedUnit,
-                      hint: "Pcs. (Pieces)",
-                      items: const ["Pcs. (Pieces)", "Kg", "Litres", "Meters"],
-                      onChanged: onUnitChanged,
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: _LabeledField(
-                    label: "Supplied From",
-                    child: _DropdownField(
-                      value: selectedCompany,
-                      hint: "Some Company Name",
-                      items: const [
-                        "Some Company Name",
-                        "Bottles 1L",
-                        "Boxes",
-                        "Cartons",
-                        "Packets",
-                      ],
-                      onChanged: onCompanyChanged,
-                    ),
+                const SizedBox(height: 50),
+
+                _LabeledField(
+                  label: "Supplied From",
+                  child: _DropdownField(
+                    value: selectedCompany,
+                    hint: "Some Company Name",
+                    items: const [
+                      "Some Company Name",
+                      "Bottles 1L",
+                      "Boxes",
+                      "Cartons",
+                      "Packets",
+                    ],
+                    onChanged: onCompanyChanged,
                   ),
                 ),
               ],
             ),
           ),
+
           const SizedBox(width: 32),
+          // RIGHT COLUMN
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Expanded(
-                  child: _LabeledField(
-                    label: "Opening Stock Quantity",
-                    child: _TextField(hint: "20,000,000 Pcs."),
-                  ),
+                _LabeledField(
+                  label: "Opening Stock Quantity",
+                  child: _TextField(hint: "20,000,000 Pcs."),
                 ),
-                Expanded(
-                  child: Container(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.min,
+
+                const SizedBox(height: 50),
+
+                // Price (In Rupees) with Change button
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text("price (in rupees)"),
-                            const SizedBox(width: 8),
-                            TextButton(
-                              onPressed: () {},
-                              child: const Text("change from rupees"),
-                            ),
-                          ],
+                        Text("Price (In Rupees)"),
+                        TextButton(
+                          onPressed: () {},
+                          child: const Text("Change From Rupees"),
                         ),
-                        _TextField(hint: "20,000,000 rs."),
                       ],
                     ),
-                  ),
+                    const SizedBox(height: 4),
+                    _TextField(hint: "20,000,000 Rs."),
+                  ],
                 ),
-                Expanded(
-                  child: _LabeledField(
-                    label: "Product Code",
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: TextField(
-                            decoration: InputDecoration(
-                              hintText: "SGMW-24-001 - auto generated",
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              isDense: true,
-                              contentPadding: const EdgeInsets.symmetric(
-                                horizontal: 12,
-                                vertical: 10,
-                              ),
-                              fillColor: Colors.white,
-                              filled: true,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(width: 4),
-                        SvgPicture.asset(
+
+                const SizedBox(height: 62),
+
+                _LabeledField(
+                  label: "Product Code",
+                  child: TextField(
+                    decoration: InputDecoration(
+                      hintText: "SGMW-24-001 - Auto Generated",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      isDense: true,
+                      contentPadding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical: 10,
+                      ),
+                      fillColor: Colors.white,
+                      filled: true,
+                      suffixIcon: Padding(
+                        padding: const EdgeInsets.only(right: 8.0),
+                        child: SvgPicture.asset(
                           'assets/icons/settings_icon.svg',
                           width: 24,
                           height: 24,
                         ),
-                      ],
+                      ),
+                      // To remove default padding of suffixIcon
+                      suffixIconConstraints: const BoxConstraints(
+                        minWidth: 32,
+                        minHeight: 32,
+                      ),
                     ),
                   ),
                 ),
-                Expanded(
-                  child: _LabeledField(
-                    label: "Note",
-                    child: _TextField(hint: "Fnifinf"),
-                  ),
+
+                const SizedBox(height: 50),
+
+                _LabeledField(
+                  label: "Note",
+                  child: _TextField(hint: "Fnifinf"),
                 ),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Switch(value: true, onChanged: (_) {}),
-                      const Text("Variants"),
-                      const SizedBox(width: 16),
-                      OutlinedButton.icon(
-                        onPressed: () {},
-                        icon: const Icon(Icons.add),
-                        label: const Text("Create New Variant"),
+
+                const SizedBox(height: 50),
+
+                // Variants section at the bottom
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      "Variants",
+                      style: TextStyle(fontSize: 14, color: Colors.black54),
+                    ),
+                    const SizedBox(height: 5),
+                    Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        color: Color.fromRGBO(248, 251, 255, 1),
+                        border: Border.all(
+                          color: Color.fromRGBO(71, 160, 255, 1),
+                          width: 1.5,
+                        ),
+                        borderRadius: BorderRadius.circular(8),
                       ),
-                    ],
-                  ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            "This Stock Item Does Not Contain Variants Yet, Click On Create Variants To Add New Item",
+                            style: TextStyle(
+                              color: Colors.blueGrey,
+                              fontSize: 12,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                          const SizedBox(height: 12),
+                          OutlinedButton.icon(
+                            onPressed: () {},
+                            icon: const Icon(
+                              Icons.add,
+                              color: Color.fromRGBO(71, 160, 255, 1),
+                            ),
+                            label: const Text(
+                              "Create New Variant",
+                              style: TextStyle(
+                                color: Color.fromRGBO(71, 160, 255, 1),
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            style: OutlinedButton.styleFrom(
+                              side: const BorderSide(
+                                color: Color.fromRGBO(71, 160, 255, 1),
+                                width: 1.5,
+                              ),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(24),
+                              ),
+                              minimumSize: const Size(0, 40),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 24,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
