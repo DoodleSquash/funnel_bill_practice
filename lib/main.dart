@@ -749,63 +749,60 @@ class _TaxInfoForm extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // Tax Information label and GST field with switch
-          
-            _LabeledField(
-              label: "Tax Information",
-              child: TextField(
-                decoration: InputDecoration(
-                  hintText: "GST",
-                  fillColor: Colors.white,
-                  filled: true,
-                  border: OutlineInputBorder(
+          _LabeledField(
+            label: "Tax Information",
+            child: TextField(
+              decoration: InputDecoration(
+                hintText: "GST",
+                fillColor: Colors.white,
+                filled: true,
+                border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
                   borderSide: const BorderSide(
                     color: Color.fromRGBO(168, 209, 255, 1),
                     width: 1,
                   ),
-                  ),
-                  enabledBorder: OutlineInputBorder(
+                ),
+                enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
                   borderSide: const BorderSide(
                     color: Color.fromRGBO(168, 209, 255, 1),
                     width: 1,
                   ),
-                  ),
-                  focusedBorder: OutlineInputBorder(
+                ),
+                focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
                   borderSide: const BorderSide(
                     color: Color.fromRGBO(71, 160, 255, 1),
                     width: 2,
                   ),
-                  ),
-                  contentPadding: const EdgeInsets.symmetric(
+                ),
+                contentPadding: const EdgeInsets.symmetric(
                   horizontal: 12,
                   vertical: 10,
-                  ),
-                  suffixIcon: Padding(
+                ),
+                suffixIcon: Padding(
                   padding: const EdgeInsets.only(right: 8.0),
                   child: SizedBox(
                     height: 32,
                     child: CupertinoSwitch(
-                    value: true,
-                    onChanged: (val) {},
-                    activeTrackColor: Color.fromRGBO(32, 137, 255, 1)
+                      value: true,
+                      onChanged: (val) {},
+                      activeTrackColor: Color.fromRGBO(32, 137, 255, 1),
                     ),
                   ),
-                  ),
-                  suffixIconConstraints: const BoxConstraints(
+                ),
+                suffixIconConstraints: const BoxConstraints(
                   minWidth: 50,
                   minHeight: 22,
-                  ),
                 ),
               ),
             ),
-
+          ),
 
           const SizedBox(height: 30),
+
           // HSN Code with arrow
-
-
           _LabeledField(
             label: "HSN Code",
 
@@ -815,10 +812,8 @@ class _TaxInfoForm extends StatelessWidget {
               onChanged: (val) {},
             ),
           ),
-          
 
           const SizedBox(height: 30),
-
 
           // Taxes box
           Container(
@@ -826,7 +821,7 @@ class _TaxInfoForm extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 23, horizontal: 30),
             decoration: BoxDecoration(
               color: Color.fromRGBO(235, 244, 255, 1),
-                            borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(12),
             ),
             child: Column(
               children: [
@@ -919,37 +914,124 @@ class _ReferenceImages extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 708,
-      // width: 308,
-      padding: const EdgeInsets.all(18),
+      padding: const EdgeInsets.all(33),
       decoration: BoxDecoration(
         color: const Color.fromRGBO(248, 251, 255, 1),
         borderRadius: BorderRadius.circular(16),
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          const Text(
+            "Reference Images",
+            style: TextStyle(
+              fontSize: 14,
+              color: Color.fromRGBO(108, 108, 108, 1),
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+          const SizedBox(height: 14),
           Container(
-            width: 120,
-            height: 120,
             decoration: BoxDecoration(
-              border: Border.all(color: Colors.blue.shade100),
-              borderRadius: BorderRadius.circular(12),
               color: Colors.white,
+              border: Border.all(
+                color: Color.fromRGBO(152, 201, 255, 1),
+                width: 1.5,
+              ),
+              borderRadius: BorderRadius.circular(12),
             ),
-            child: const Center(
-              child: Icon(Icons.image, size: 60, color: Colors.blue),
+            child: Column(
+              children: [
+                Container(
+                  width: 180,
+                  height: 180,
+                  margin: const EdgeInsets.all(18),
+                  // decoration: BoxDecoration(
+                  //   color: const Color.fromRGBO(235, 244, 255, 1),
+                  //   borderRadius: BorderRadius.circular(8),
+                  // ),
+                  child: Center(
+                    child: Image.asset(
+                      'assets/images/funnel.png', // Replace with your PNG image asset path
+                      width: 180,
+                      height: 180,
+                      fit: BoxFit.contain,
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 18),
+                  child: OutlinedButton(
+                    onPressed: () {},
+                    style: OutlinedButton.styleFrom(
+                      side: const BorderSide(
+                        color: Color.fromRGBO(152, 201, 255, 1),
+                        width: 1.5,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      minimumSize: const Size.fromHeight(40),
+                      backgroundColor: Color.fromRGBO(245, 249, 255, 1),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        const Text(
+                          "Change Image",
+                          style: TextStyle(
+                            color: Color.fromRGBO(40, 40, 40, 1),
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        const SizedBox(width: 8),
+                        SvgPicture.asset(
+                          'assets/icons/Folder_icon.svg', // Replace with your folder icon asset
+                          width: 20,
+                          height: 20,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 10),
+              ],
             ),
           ),
-          const SizedBox(height: 16),
-          OutlinedButton.icon(
+          const SizedBox(height: 24),
+          OutlinedButton(
             onPressed: () {},
-            icon: const Icon(Icons.folder_open),
-            label: const Text("Change Image"),
-          ),
-          const SizedBox(height: 16),
-          OutlinedButton.icon(
-            onPressed: () {},
-            icon: const Icon(Icons.add),
-            label: const Text("Add Reference Document"),
+            style: OutlinedButton.styleFrom(
+              side: const BorderSide(
+                color: Color.fromRGBO(77, 160, 255, 1),
+                width: 1.5,
+              ),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8),
+              ),
+              minimumSize: const Size.fromHeight(40),
+              backgroundColor: Colors.white,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Text(
+                  "Add Reference Document",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                const SizedBox(width: 8),
+                SvgPicture.asset(
+                  'assets/icons/Variants plus.svg', // Replace with your plus icon asset
+                  width: 20,
+                  height: 20,
+                ),
+              ],
+            ),
           ),
         ],
       ),
