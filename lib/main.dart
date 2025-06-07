@@ -81,7 +81,51 @@ class _StockItemScreenState extends State<StockItemScreen> {
             child: Container(color: Color.fromRGBO(0, 0, 0, 0.2)),
           ),
 
-          Container(height: 68, color: Color.fromRGBO(255, 255, 255, 1)),
+          Container(
+                      height: 68,
+                      color: Color.fromRGBO(255, 255, 255, 1),
+                      child: Center(
+                        child: Container(
+                          width: 400, // Adjust width as needed
+                          height: 44,
+                          decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(8),
+                          boxShadow: [
+                            BoxShadow(
+                            color: Colors.black.withOpacity(0.07),
+                            blurRadius: 12,
+                            offset: const Offset(0, 2),
+                            ),
+                          ],
+                          border: Border.all(
+                            color: const Color.fromRGBO(168, 209, 255, 1),
+                            width: 1,
+                          ),
+                          ),
+                          child: TextField(
+                          decoration: InputDecoration(
+                            hintText: "Search Company",
+                            hintStyle: const TextStyle(
+                            color: Color.fromRGBO(108, 108, 108, 1),
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400,
+                            ),
+                            suffixIcon: Padding(
+                            padding: const EdgeInsets.only(left: 12, right: 8),
+                            child: Icon(Icons.search, color: Color.fromRGBO(71, 160, 255, 1)),
+                            ),
+                            border: InputBorder.none,
+                            contentPadding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+                          ),
+                          style: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400,
+                          ),
+                          ),
+                        ),
+                      ),
+                    ),
 
           // Sidebar
           Container(
@@ -277,10 +321,10 @@ class _StockItemScreenState extends State<StockItemScreen> {
                           },
                         ),
                       ),
-                      const SizedBox(width: 32),
+                      const SizedBox(width: 10),
                       // Tax Info
                       Expanded(flex: 1, child: _TaxInfoForm()),
-                      const SizedBox(width: 32),
+                      const SizedBox(width: 10),
                       // Reference Images
                       Expanded(flex: 1, child: _ReferenceImages()),
                     ],
@@ -914,126 +958,138 @@ class _ReferenceImages extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 708,
-      padding: const EdgeInsets.all(33),
       decoration: BoxDecoration(
         color: const Color.fromRGBO(248, 251, 255, 1),
         borderRadius: BorderRadius.circular(16),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Text(
-            "Reference Images",
-            style: TextStyle(
-              fontSize: 14,
-              color: Color.fromRGBO(108, 108, 108, 1),
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-          const SizedBox(height: 14),
-          Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              border: Border.all(
-                color: Color.fromRGBO(152, 201, 255, 1),
-                width: 1.5,
-              ),
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Column(
+      child: Padding(
+        padding: const EdgeInsets.only(left: 25, right: 25, top: 30),
+        child: Column(
+          
+          
+          
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Container(
-                  width: 180,
-                  height: 180,
-                  margin: const EdgeInsets.all(18),
-                  // decoration: BoxDecoration(
-                  //   color: const Color.fromRGBO(235, 244, 255, 1),
-                  //   borderRadius: BorderRadius.circular(8),
-                  // ),
-                  child: Center(
-                    child: Image.asset(
-                      'assets/images/funnel.png', // Replace with your PNG image asset path
-                      width: 180,
-                      height: 180,
-                      fit: BoxFit.contain,
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 18),
-                  child: OutlinedButton(
-                    onPressed: () {},
-                    style: OutlinedButton.styleFrom(
-                      side: const BorderSide(
-                        color: Color.fromRGBO(152, 201, 255, 1),
-                        width: 1.5,
-                      ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      minimumSize: const Size.fromHeight(40),
-                      backgroundColor: Color.fromRGBO(245, 249, 255, 1),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        const Text(
-                          "Change Image",
-                          style: TextStyle(
-                            color: Color.fromRGBO(40, 40, 40, 1),
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                        const SizedBox(width: 8),
-                        SvgPicture.asset(
-                          'assets/icons/Folder_icon.svg', // Replace with your folder icon asset
-                          width: 20,
-                          height: 20,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 10),
-              ],
-            ),
-          ),
-          const SizedBox(height: 24),
-          OutlinedButton(
-            onPressed: () {},
-            style: OutlinedButton.styleFrom(
-              side: const BorderSide(
-                color: Color.fromRGBO(77, 160, 255, 1),
-                width: 1.5,
-              ),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8),
-              ),
-              minimumSize: const Size.fromHeight(40),
-              backgroundColor: Colors.white,
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const Text(
-                  "Add Reference Document",
+                Text(
+                  "Reference Images",
                   style: TextStyle(
-                    color: Colors.black,
+                    fontSize: 14,
+                    color: Color.fromRGBO(108, 108, 108, 1),
                     fontWeight: FontWeight.w500,
                   ),
                 ),
-                const SizedBox(width: 8),
-                SvgPicture.asset(
-                  'assets/icons/Variants plus.svg', // Replace with your plus icon asset
-                  width: 20,
-                  height: 20,
-                ),
               ],
             ),
-          ),
-        ],
+            const SizedBox(height: 14),
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                border: Border.all(
+                  color: Color.fromRGBO(152, 201, 255, 1),
+                  width: 1.5,
+                ),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Column(
+                children: [
+                  Container(
+                    width: 220,
+                    height: 220,
+                    margin: const EdgeInsets.only(
+                      top: 20,
+                      left: 20,
+                      right: 20,
+                      bottom: 14,
+                    ),
+                    child: Image.asset(
+                      'assets/images/funnel.png', // Your image asset
+                      width: 220,
+                      height: 220,
+                      fit: BoxFit.fill,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 18),
+                    child: OutlinedButton(
+                      onPressed: () {},
+                      style: OutlinedButton.styleFrom(
+                        side: const BorderSide(
+                          color: Color.fromRGBO(152, 201, 255, 1),
+                          width: 1.5,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        minimumSize: const Size(0, 40),
+                        backgroundColor: Color.fromRGBO(245, 249, 255, 1),
+                        padding: const EdgeInsets.symmetric(horizontal: 18),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const Text(
+                            "Change Image",
+                            style: TextStyle(
+                              color: Color.fromRGBO(40, 40, 40, 1),
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                          const SizedBox(width: 12),
+                          SvgPicture.asset(
+                            'assets/icons/Folder_icon.svg', // Your folder icon asset
+                            width: 20,
+                            height: 20,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 14),
+                ],
+              ),
+            ),
+            const SizedBox(height: 32), // This pushes the button to the bottom
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 24),
+                child: OutlinedButton(
+                  onPressed: () {},
+                  style: OutlinedButton.styleFrom(
+                    side: const BorderSide(
+                      color: Color.fromRGBO(77, 160, 255, 1),
+                      width: 1.5,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    minimumSize: const Size(220, 40),
+                    backgroundColor: Colors.white,
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const Text(
+                        "Add Reference Document",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      const SizedBox(width: 8),
+                      SvgPicture.asset(
+                        'assets/icons/Variants plus.svg', // Replace with your plus icon asset
+                        width: 20,
+                        height: 20,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
