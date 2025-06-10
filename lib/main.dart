@@ -15,17 +15,15 @@ class MyApp extends StatelessWidget {
       title: 'Stock Item UI',
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        fontFamily: 'Segoe UI', // <-- Set your font family globally
         textTheme: const TextTheme(
           bodyLarge: TextStyle(
-            fontFamily: 'Segoe UI',
             fontWeight: FontWeight.w400,
             fontSize: 16,
-            height: 1.0, // 100%
+            height: 1.0,
             letterSpacing: 0,
           ),
           bodyMedium: TextStyle(
-            fontFamily: 'Segoe UI',
+            // fontFamily: 'Segoe UI',
             fontWeight: FontWeight.w400,
             fontSize: 16,
             height: 1.0,
@@ -33,7 +31,7 @@ class MyApp extends StatelessWidget {
             textBaseline: TextBaseline.alphabetic,
           ),
           bodySmall: TextStyle(
-            fontFamily: 'Segoe UI',
+            // fontFamily: 'Segoe UI',
             fontWeight: FontWeight.w400,
             fontSize: 16,
             height: 1.0,
@@ -43,7 +41,7 @@ class MyApp extends StatelessWidget {
         ),
         inputDecorationTheme: const InputDecorationTheme(
           hintStyle: TextStyle(
-            fontFamily: 'Segoe UI',
+            // fontFamily: 'Segoe UI',
             fontWeight: FontWeight.w400,
             fontSize: 16,
             height: 1.0,
@@ -82,50 +80,56 @@ class _StockItemScreenState extends State<StockItemScreen> {
           ),
 
           Container(
-                      height: 68,
-                      color: Color.fromRGBO(255, 255, 255, 1),
-                      child: Center(
-                        child: Container(
-                          width: 400, // Adjust width as needed
-                          height: 44,
-                          decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(8),
-                          boxShadow: [
-                            BoxShadow(
-                            color: Colors.black.withOpacity(0.07),
-                            blurRadius: 12,
-                            offset: const Offset(0, 2),
-                            ),
-                          ],
-                          border: Border.all(
-                            color: const Color.fromRGBO(168, 209, 255, 1),
-                            width: 1,
-                          ),
-                          ),
-                          child: TextField(
-                          decoration: InputDecoration(
-                            hintText: "Search Company",
-                            hintStyle: const TextStyle(
-                            color: Color.fromRGBO(108, 108, 108, 1),
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400,
-                            ),
-                            suffixIcon: Padding(
-                            padding: const EdgeInsets.only(left: 12, right: 8),
-                            child: Icon(Icons.search, color: Color.fromRGBO(71, 160, 255, 1)),
-                            ),
-                            border: InputBorder.none,
-                            contentPadding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-                          ),
-                          style: const TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400,
-                          ),
-                          ),
-                        ),
+            height: 68,
+            color: Color.fromRGBO(255, 255, 255, 1),
+            child: Center(
+              child: Container(
+                width: 400, // Adjust width as needed
+                height: 44,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(8),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.07),
+                      blurRadius: 12,
+                      offset: const Offset(0, 2),
+                    ),
+                  ],
+                  border: Border.all(
+                    color: const Color.fromRGBO(168, 209, 255, 1),
+                    width: 1,
+                  ),
+                ),
+                child: TextField(
+                  decoration: InputDecoration(
+                    hintText: "Search Company",
+                    hintStyle: const TextStyle(
+                      color: Color.fromRGBO(108, 108, 108, 1),
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400,
+                    ),
+                    suffixIcon: Padding(
+                      padding: const EdgeInsets.only(left: 12, right: 8),
+                      child: Icon(
+                        Icons.search,
+                        color: Color.fromRGBO(71, 160, 255, 1),
                       ),
                     ),
+                    border: InputBorder.none,
+                    contentPadding: const EdgeInsets.symmetric(
+                      vertical: 12,
+                      horizontal: 16,
+                    ),
+                  ),
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+              ),
+            ),
+          ),
 
           // Sidebar
           Container(
@@ -285,7 +289,11 @@ class _StockItemScreenState extends State<StockItemScreen> {
                 children: [
                   const Text(
                     "Create Stock Item",
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400,
+                      color: Colors.black,
+                    ),
                   ),
                   const SizedBox(height: 25),
                   Row(
@@ -443,9 +451,7 @@ class _StockItemForm extends StatelessWidget {
                           style: const TextStyle(
                             fontSize: 14,
                             color: Color.fromRGBO(108, 108, 108, 1),
-                            fontWeight:
-                                FontWeight
-                                    .w600, // <-- Use weight 500 for labels
+                            fontWeight: FontWeight.w600,
                           ),
                         ),
                         TextButton(
@@ -477,9 +483,7 @@ class _StockItemForm extends StatelessWidget {
                           style: const TextStyle(
                             fontSize: 14,
                             color: Color.fromRGBO(108, 108, 108, 1),
-                            fontWeight:
-                                FontWeight
-                                    .w600, // <-- Use weight 500 for labels
+                            fontWeight: FontWeight.w600,
                           ),
                         ),
                         TextButton(
@@ -901,7 +905,7 @@ class _TaxRow extends StatelessWidget {
               fontWeight: FontWeight.w400,
               fontSize: 16,
               color: Colors.black54,
-              fontFamily: 'Segoe UI',
+              // fontFamily: 'Segoe UI',
             ),
           ),
         ),
@@ -965,9 +969,6 @@ class _ReferenceImages extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.only(left: 25, right: 25, top: 30),
         child: Column(
-          
-          
-          
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -1187,13 +1188,27 @@ class _DropdownField extends StatelessWidget {
       style: const TextStyle(
         color: Colors.black,
         fontSize: 16,
-        fontWeight: FontWeight.w400, // <-- weight 400 for dropdown input
+        fontWeight: FontWeight.w400,
+        // fontFamily: 'Segoe UI', // <-- Removed!
+      ),
+      icon: const Icon(
+        Icons.keyboard_arrow_down,
+        color: Color.fromRGBO(71, 160, 255, 1),
+        size: 28,
+        // Do NOT set fontFamily here!
       ),
       items:
           items.map((item) {
-            return DropdownMenuItem<String>(value: item, child: Text(item));
+            return DropdownMenuItem<String>(
+              value: item,
+              child: Text(
+                item,
+                // style: const TextStyle(
+                //   fontFamily: 'Segoe UI', // <-- Removed!
+                // ),
+              ),
+            );
           }).toList(),
-
       onChanged: onChanged,
       decoration: InputDecoration(
         fillColor: Colors.white,
@@ -1201,25 +1216,24 @@ class _DropdownField extends StatelessWidget {
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
           borderSide: const BorderSide(
-            color: Color.fromRGBO(168, 209, 255, 1), // <-- Updated color
+            color: Color.fromRGBO(168, 209, 255, 1),
             width: 1,
           ),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
           borderSide: const BorderSide(
-            color: Color.fromRGBO(168, 209, 255, 1), // <-- Updated color
+            color: Color.fromRGBO(168, 209, 255, 1),
             width: 1,
           ),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
           borderSide: const BorderSide(
-            color: Color.fromRGBO(71, 160, 255, 1), // <-- Selected color
+            color: Color.fromRGBO(71, 160, 255, 1),
             width: 2,
           ),
         ),
-        // isDense: true,
         contentPadding: const EdgeInsets.symmetric(
           horizontal: 12,
           vertical: 10,
