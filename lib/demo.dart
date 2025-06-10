@@ -4,15 +4,14 @@ void main() => runApp(
   MaterialApp(
     home: Scaffold(
       body: Center(
-        child: DropdownButton<String>(
-          value: 'One',
-          items:
-              [
-                'One',
-                'Two',
-              ].map((e) => DropdownMenuItem(value: e, child: Text(e))).toList(),
-          onChanged: (_) {},
-        ),
+        child: Container(
+          child: Icon(
+            Icons.star,
+            size: 50,
+            color: Colors.yellow,
+          ),
+          
+        )
       ),
     ),
   ),
