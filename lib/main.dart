@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
             letterSpacing: 0,
           ),
           bodyMedium: TextStyle(
-            // fontFamily: 'Segoe UI',
+             fontFamily: 'Segoe UI',
             fontWeight: FontWeight.w400,
             fontSize: 16,
             height: 1.0,
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
             textBaseline: TextBaseline.alphabetic,
           ),
           bodySmall: TextStyle(
-            // fontFamily: 'Segoe UI',
+             fontFamily: 'Segoe UI',
             fontWeight: FontWeight.w400,
             fontSize: 16,
             height: 1.0,
@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
         ),
         inputDecorationTheme: const InputDecorationTheme(
           hintStyle: TextStyle(
-            // fontFamily: 'Segoe UI',
+             fontFamily: 'Segoe UI',
             fontWeight: FontWeight.w400,
             fontSize: 16,
             height: 1.0,
@@ -905,7 +905,7 @@ class _TaxRow extends StatelessWidget {
               fontWeight: FontWeight.w400,
               fontSize: 16,
               color: Colors.black54,
-              // fontFamily: 'Segoe UI',
+               fontFamily: 'Segoe UI',
             ),
           ),
         ),
@@ -946,7 +946,7 @@ class _TaxRow extends StatelessWidget {
             style: const TextStyle(
               fontWeight: FontWeight.w400,
               fontSize: 16,
-              // fontFamily: 'Segoe UI',
+               fontFamily: 'Segoe UI',
             ),
           ),
         ),
@@ -1203,9 +1203,9 @@ class _DropdownField extends StatelessWidget {
               value: item,
               child: Text(
                 item,
-                // style: const TextStyle(
-                //   fontFamily: 'Segoe UI', // <-- Removed!
-                // ),
+                 style: const TextStyle(
+                   fontFamily: 'Segoe UI', // <-- Removed!
+                 ),
               ),
             );
           }).toList(),
