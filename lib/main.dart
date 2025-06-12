@@ -80,56 +80,119 @@ class _StockItemScreenState extends State<StockItemScreen> {
           ),
 
           Container(
-            height: 68,
-            color: Color.fromRGBO(255, 255, 255, 1),
-            child: Center(
-              child: Container(
-                width: 400, // Adjust width as needed
-                height: 44,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(8),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.07),
-                      blurRadius: 12,
-                      offset: const Offset(0, 2),
-                    ),
-                  ],
-                  border: Border.all(
-                    color: const Color.fromRGBO(168, 209, 255, 1),
-                    width: 1,
-                  ),
+  height: 68,
+  width: double.infinity,
+  color: Colors.white,
+  child: Stack(
+    alignment: Alignment.center,
+    children: [
+      // Centered Search Box
+      Center(
+        child: Container(
+          width: 718,
+          height: 44,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(8),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.07),
+                blurRadius: 12,
+                offset: Offset(0, 2),
+              ),
+            ],
+            border: Border.all(
+              color: Color.fromRGBO(168, 209, 255, 1),
+              width: 1,
+            ),
+          ),
+          child: TextField(
+            decoration: InputDecoration(
+              hintText: "Search Company",
+              hintStyle: TextStyle(
+                color: Color.fromRGBO(108, 108, 108, 1),
+                fontSize: 16,
+                fontWeight: FontWeight.w400,
+              ),
+              suffixIcon: Padding(
+                padding: EdgeInsets.only(left: 12, right: 8),
+                child: Icon(
+                  Icons.search,
+                  color: Color.fromRGBO(71, 160, 255, 1),
                 ),
-                child: TextField(
-                  decoration: InputDecoration(
-                    hintText: "Search Company",
-                    hintStyle: const TextStyle(
-                      color: Color.fromRGBO(108, 108, 108, 1),
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400,
-                    ),
-                    suffixIcon: Padding(
-                      padding: const EdgeInsets.only(left: 12, right: 8),
-                      child: Icon(
-                        Icons.search,
-                        color: Color.fromRGBO(71, 160, 255, 1),
-                      ),
-                    ),
-                    border: InputBorder.none,
-                    contentPadding: const EdgeInsets.symmetric(
-                      vertical: 12,
-                      horizontal: 16,
-                    ),
+              ),
+              border: InputBorder.none,
+              contentPadding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+            ),
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+          ),
+        ),
+      ),
+
+      // Right-Aligned Buttons
+      Positioned(
+        right: 16,
+        child: Row(
+          children: [
+            SizedBox(
+              width: 129,
+              height: 40,
+              child: OutlinedButton(
+                onPressed: () {},
+                style: OutlinedButton.styleFrom(
+                  backgroundColor: Color.fromRGBO(238, 238, 238, 1),
+                  side: BorderSide(
+                    color: Color.fromRGBO(238, 238, 238, 1),
+                    width: 1.5,
                   ),
-                  style: const TextStyle(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  padding: EdgeInsets.symmetric(horizontal: 4),
+                ),
+                child: Text(
+                  "Notifications",
+                  style: TextStyle(
                     fontSize: 16,
-                    fontWeight: FontWeight.w400,
+                    color: Colors.black,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
               ),
             ),
-          ),
+            const SizedBox(width: 15), // Space between buttons
+            // Add more buttons here if needed
+            SizedBox(
+              width: 58,
+              height: 23,
+              child: OutlinedButton(
+                onPressed: () {},
+                style: OutlinedButton.styleFrom(
+                  backgroundColor: Color.fromRGBO(176, 255, 170, 1),
+                  side: BorderSide(
+                    color: Color.fromRGBO(176, 255, 170, 1),
+                    width: 1.5,
+                  ),
+                  
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(14.5),
+                  ),
+                  
+                ),
+                child: SvgPicture.asset( 'assets/icons/cloud.svg',
+                  width: 16,
+                  height: 17,
+                   // Adjust color as needed
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    ],
+  ),
+),
+
 
           // Sidebar
           Container(
@@ -271,7 +334,7 @@ class _StockItemScreenState extends State<StockItemScreen> {
               padding: const EdgeInsets.only(
                 left: 30,
                 right: 30,
-                bottom: 98,
+                bottom: 30,
                 top: 30,
               ),
               decoration: BoxDecoration(
@@ -336,7 +399,45 @@ class _StockItemScreenState extends State<StockItemScreen> {
                       // Reference Images
                       Expanded(flex: 1, child: _ReferenceImages()),
                     ],
-                  ),
+                    ),
+                    const SizedBox(height: 30),
+                    // Place the Done button at the bottom right
+                    Padding(
+                      padding: const EdgeInsets.only(right: 30),
+                      child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        SizedBox(
+                        width: 129,
+                        height: 41, // Set your desired fixed width here
+                        child: OutlinedButton(
+                          onPressed: () {},
+                          style: OutlinedButton.styleFrom(
+                          backgroundColor: const Color.fromRGBO(26, 132, 246, 1),
+                          side: const BorderSide(
+                            color: Color.fromRGBO(77, 160, 255, 1),
+                            width: 1.5,
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          minimumSize: const Size(129, 40),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 24,
+                          ),
+                          ),
+                          child: const Text(
+                          " Done ",
+                          style: TextStyle(
+                            color: Color.fromRGBO(255, 255, 255, 1),
+                            fontWeight: FontWeight.w400,
+                          ),
+                          ),
+                        ),
+                        ),
+                      ],
+                      ),
+                    ),
                 ],
               ),
             ),
@@ -1192,8 +1293,8 @@ class _DropdownField extends StatelessWidget {
         // fontFamily: 'Segoe UI', // <-- Removed!
       ),
       icon: const Icon(
-        Icons.keyboard_arrow_down,
-        color: Color.fromRGBO(71, 160, 255, 1),
+        Icons.keyboard_arrow_right,
+        color: Color.fromRGBO(108, 108, 108, 1),
         size: 28,
         // Do NOT set fontFamily here!
       ),
